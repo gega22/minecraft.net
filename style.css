@@ -1,0 +1,35 @@
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+.background{
+    width: 2000px;
+}
+.signup{
+    font-size: 30px;
+    font-family: 'Minecraft', sans-serif;
+}
+.login{
+    font-size: 30px;
+    font-family: 'Minecraft', sans-serif;
+}
+.img{
+    width: 1350px;
+    height: 500px;
+}
+.img2{
+    width: 1200px;
+    height: 500px;
+}
+.text1{
+    font-size: 30px;
+    font-family: 'Minecraft', sans-serif;
+    color: limegreen;
+}
+.text2{
+    font-size: 30px;
+    color: brown;
+    font-family: 'Minecraft', sans-serif;
+}
+.text3{
+    font-size: 30px;
+    color: aqua;
+    font-family: 'Minecraft', sans-serif;
+}
