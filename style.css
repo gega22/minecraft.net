@@ -1,4 +1,10 @@
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
+body{
+    background: url('background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 .background{
     width: 2000px;
 }
@@ -9,6 +15,10 @@
 .login{
     font-size: 30px;
     font-family: 'Minecraft', sans-serif;
+}
+.nether-update-link{
+    font-size: 30px;
+    font-family: 'Minecraft', sans-serif;  
 }
 .img{
     width: 1350px;
