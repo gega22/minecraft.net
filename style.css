@@ -32,26 +32,15 @@ body{
     width: 1200px;
     height: 500px;
 }
-.text1{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif;
-    color: limegreen;
-}
-.text2{
-    font-size: 30px;
-    color: brown;
-    font-family: 'Minecraft', sans-serif;
-}
-.text3{
-    font-size: 30px;
-    color: aqua;
-    font-family: 'Minecraft', sans-serif;
-}
 .ocean-update-link{
     font-size: 30px;
     font-family: 'Minecraft', sans-serif;  
 }
 .trails-tales-update-link{
+    font-size: 30px;
+    font-family: 'Minecraft', sans-serif; 
+}
+.about-game-link{
     font-size: 30px;
     font-family: 'Minecraft', sans-serif; 
 }
