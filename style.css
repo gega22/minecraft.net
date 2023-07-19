@@ -1,13 +1,4 @@
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
-body{
-    background: url('background.gif');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-.background{
-    width: 2000px;
-}
 .signup{
     font-size: 30px;
     font-family: 'Minecraft', sans-serif;
