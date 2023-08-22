@@ -5,47 +5,158 @@ body{
     background-attachment: fixed;
     background-size: cover;
 }
-.signup{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif;
+.btn{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
 }
-.login{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif;
+
+.btn:hover{
+    transform: translateY(-10px);
 }
-.nether-update-link{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif;  
+.btn1{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
 }
-.wild-update-link{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif;  
+
+.btn1:hover{
+    transform: translateY(-10px);
 }
-.img{
-    width: 1350px;
-    height: 500px;
+.btn2{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
 }
-.img2{
-    width: 1200px;
-    height: 500px;
+
+.btn2:hover{
+    transform: translateY(-10px);
 }
-.ocean-update-link{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif;  
+.btn3{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
 }
-.trails-tales-update-link{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif; 
+
+.btn3:hover{
+    transform: translateY(-10px);
 }
-.about-game-link{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif; 
+.btn4{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
 }
-.change-background-link{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif;
+
+.btn4:hover{
+    transform: translateY(-10px);
 }
-.without-background-link{
-    font-size: 30px;
-    font-family: 'Minecraft', sans-serif;
+.btn5{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.btn5:hover{
+    transform: translateY(-10px);
+}
+.btn6{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.btn6:hover{
+    transform: translateY(-10px);
+}
+.btn7{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.btn7:hover{
+    transform: translateY(-10px);
+}
+.btn8{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.btn8:hover{
+    transform: translateY(-10px);
+}.btn9{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.btn9:hover{
+    transform: translateY(-10px);
+}
+.btn10{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.btn10:hover{
+    transform: translateY(-10px);
+}
+.btn11{
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: violet;
+    border: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.btn11:hover{
+    transform: translateY(-10px);
 }
