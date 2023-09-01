@@ -25,7 +25,7 @@ body{
     color: violet;
     border: 10px;
     border-radius: 5px;
-    transition: transform 0.3s;
+    transition: transform 0.4s;
 }
 
 .btn1:hover{
