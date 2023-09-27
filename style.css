@@ -182,3 +182,31 @@ a:hover {
 .btn11:hover{
     transform: translateY(-10px);
 }
+
+
+*{
+    margin: 0;
+    padding: 0;
+  }
+  .loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: lightgrey;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .disppear{
+    animation: vanish 1s forwards;
+    animation-delay: 3s;
+  }
+  @keyframes vanish {
+    100%{
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
