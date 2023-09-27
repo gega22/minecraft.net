@@ -202,7 +202,7 @@ a:hover {
   
   .disppear{
     animation: vanish 1s forwards;
-    animation-delay: 3s;
+    animation-delay: 0.1s;
   }
   @keyframes vanish {
     100%{
