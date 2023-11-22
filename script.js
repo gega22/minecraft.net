@@ -5,15 +5,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // You can adjust the volume (0.0 to 1.0)
     audio.volume = 0.5;
 
-    // Function to play the music
-    function playMusic() {
-        audio.play();
-        playButton.style.display = "none"; // Hide the play button once music starts
+    // Function to play or pause the music
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            playButton.textContent = "Pause Background Music";
+        } else {
+            audio.pause();
+            playButton.textContent = "Play Background Music";
+        }
     }
 
-    // Event listener for the play button
-    playButton.addEventListener("click", playMusic);
+    // Event listener for the play/pause button
+    playButton.addEventListener("click", toggleMusic);
 
-    // You can pause the music if needed
-    // audio.pause();
+    // You can also stop the music by clicking the button again
+    playButton.addEventListener("dblclick", function () {
+        audio.pause();
+        audio.currentTime = 0; // Reset the audio to the beginning
+        playButton.textContent = "Play Background Music";
+    });
 });
