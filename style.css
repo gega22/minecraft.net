@@ -229,3 +229,25 @@ a:hover {
       .playButton:hover {
         background-color: #FFC107; /* Lighter shade of orange on hover */
       }
+.site-identity h1 a {
+    color: #fff; /* Initial color */
+    animation: colorMove 5s infinite linear;
+}
+
+@keyframes colorMove {
+    0% {
+        color: #ff0000; /* Red */
+    }
+    25% {
+        color: #00ff00; /* Green */
+    }
+    50% {
+        color: #0000ff; /* Blue */
+    }
+    75% {
+        color: #ffff00; /* Yellow */
+    }
+    100% {
+        color: #ff00ff; /* Magenta */
+    }
+}
