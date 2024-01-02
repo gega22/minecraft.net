@@ -210,25 +210,6 @@ a:hover {
       visibility: hidden;
     }
   }
-      /* Styles for the button */
-      .playButton {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        text-align: center;
-        text-decoration: none;
-        background-color: #FFA500; /* Orange color */
-        color: #fff; /* Text color */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-  
-      /* Hover effect */
-      .playButton:hover {
-        background-color: #FFC107; /* Lighter shade of orange on hover */
-      }
 .site-identity h1 a {
     color: #fff; /* Initial color */
     animation: colorMove 5s infinite linear;
