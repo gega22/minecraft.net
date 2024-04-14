@@ -140,3 +140,18 @@ a:hover {
   
   .btn:hover {
     background-color: #45a049;}
+    .what_happend{
+        font-size: 25px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .img_png{
+        height: 50px;
+    }
+    .nuhas {
+        color: white; /* Set the text color to white */
+        text-shadow: 
+          0 0 7px hsl(300, 100%, 80%),  /* Inner glow - adjust hue for color */
+          0 0 14px hsl(240, 100%, 70%), /* Outer glow - adjust hue for color */
+          0 0 21px hsl(180, 100%, 60%); /* Even further outer glow - adjust hue for color */
+        font-size: 3em;  /* Adjust font size as desired */
+      }
