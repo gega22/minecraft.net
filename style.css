@@ -155,3 +155,25 @@ a:hover {
           0 0 21px hsl(180, 100%, 60%); /* Even further outer glow - adjust hue for color */
         font-size: 3em;  /* Adjust font size as desired */
       }
+      /* styles.css */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button.turn-on.active {
+    background-color: #28a745; /* Green color when active */
+  }
+  
