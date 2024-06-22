@@ -178,4 +178,26 @@ a:hover {
   .button.turn-on.active {
     background-color: #28a745; /* Green color when active */
   }
-  
+  .announcement {
+    background-color: #f44336; /* Red background color for announcement */
+    padding: 10px; /* Padding inside announcement */
+}
+
+.announcement p {
+    margin: 0; /* Remove default margin for paragraphs */
+}
+
+.announcement strong {
+    color: #fff; /* Text color for strong tag */
+}
+
+/* Adjust link color and styles */
+.announcement a {
+    color: #fff; /* Link color for announcement */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold font weight */
+}
+
+.announcement a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
