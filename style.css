@@ -52,32 +52,6 @@ a:hover {
 .btn1:hover{
     transform: translateY(-10px);
 }
-*{
-    margin: 0;
-    padding: 0;
-  }
-  .loader{
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: lightgrey;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .disppear{
-    animation: vanish 1s forwards;
-    animation-delay: 0.1s;
-  }
-  @keyframes vanish {
-    100%{
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
       .site-identity h1 a {
         color: #fff; /* Initial color */
         animation: colorMove 5s infinite linear;
@@ -201,3 +175,29 @@ a:hover {
 .announcement a:hover {
     text-decoration: underline; /* Underline on hover */
 }
+*{
+    margin: 0;
+    padding: 0;
+  }
+  .loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: lightgrey;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .disppear{
+    animation: vanish 1s forwards;
+    animation-delay: 2s;
+  }
+  @keyframes vanish {
+    100%{
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
