@@ -1,6 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 body {
-    background: url('background.gif');
+    background: url('background.webp');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -143,6 +143,7 @@ a:hover {
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
+    text-decoration: none;
   }
   
   .button:hover {
@@ -200,4 +201,7 @@ a:hover {
       opacity: 0;
       visibility: hidden;
     }
+  }
+  .announcements{
+    color: silver;
   }
