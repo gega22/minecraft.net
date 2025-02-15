@@ -1,6 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 body {
-    background: url('background.webp');
+    background: url('39d1ec88e3ebb9bd9d2077f4b0378144.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -101,7 +101,7 @@ a:hover {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: orangered;
     color: white;
     text-align: center;
     font-size: 16px;
@@ -113,7 +113,7 @@ a:hover {
   }
   
   .btn:hover {
-    background-color: #45a049;}
+    background-color: red;}
     .what_happend{
         font-size: 25px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -130,31 +130,30 @@ a:hover {
         font-size: 3em;  /* Adjust font size as desired */
       }
       /* styles.css */
-.button {
-    position: fixed;
-    bottom: 20px; /* Adjust as needed */
-    right: 20px; /* Adjust as needed */
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #0056b3; /* Red */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
+      .turn-off {
+        position: fixed;
+        bottom: 20px; /* Adjust as needed */
+        right: 20px; /* Adjust as needed */
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: red; /* Red */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+      
+      .turn-off:hover {
+        background-color: orange; /* Darker red */
+      }
   
   .button.turn-on.active {
     background-color: #28a745; /* Green color when active */
   }
   .announcement {
-    background-color: #f44336; /* Red background color for announcement */
+    background-color: red; /* Red background color for announcement */
     padding: 10px; /* Padding inside announcement */
 }
 
