@@ -3,7 +3,7 @@ body {
     background: url('39d1ec88e3ebb9bd9d2077f4b0378144.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100% 100%;
+    background-size: 100%, 95%;
 }
   
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
@@ -204,3 +204,6 @@ a:hover {
   .announcements{
     color: silver;
   }
+.loading{
+    height: 700px;
+}
