@@ -1,3 +1,9 @@
+@media (max-width: 768px) {
+    body {
+        background-color: red; /* Changes background color on small screens */
+    }
+}
+
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 body {
     background: url('39d1ec88e3ebb9bd9d2077f4b0378144.jpg');
