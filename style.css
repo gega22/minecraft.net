@@ -1,17 +1,18 @@
-@media (max-width: 768px) {
-    body {
-        background-color: red; /* Changes background color on small screens */
-    }
-}
-
-@import url('https://fonts.cdnfonts.com/css/minecraft-4');
 body {
-    background: url('39d1ec88e3ebb9bd9d2077f4b0378144.jpg');
+    background: url('background.png');
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100%, 95%;
-}
-  
+    background-size: cover;
+  }
+  @media (max-width: 768px) {
+    body {
+        background: url('background.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+  }  
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 body {
     font-family: "Open Sans", sans-serif;
