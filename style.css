@@ -3,6 +3,38 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .rgb-line {
+    margin-top: 50px;
+    position: fixed;
+    top: 80px;  /* Adjust this to match the navbar height */
+    left: 25%;
+    transform: translateX(-50%);
+    width: 4px; /* Adjust thickness */
+    height: calc(100vh - 100px); /* Subtract navbar height to prevent touching it */
+    background: linear-gradient(180deg, red, green, blue);
+    z-index: 9999;
+    border-radius: 10px; /* Optional: makes edges smooth */
+    animation: gradientFlow 3s linear infinite;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background: linear-gradient(180deg, red, green, blue);
+    }
+    25% {
+        background: linear-gradient(180deg, green, blue, red);
+    }
+    50% {
+        background: linear-gradient(180deg, blue, red, green);
+    }
+    75% {
+        background: linear-gradient(180deg, red, green, blue);
+    }
+    100% {
+        background: linear-gradient(180deg, green, blue, red);
+    }
+}
+
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 body {
@@ -38,6 +70,8 @@ a:hover {
     margin: 1.4em 1em 1em 1em;
 }
 .btn1{
+    width: 340px;
+    margin-top: 20px;
     font-size: 2rem;
     padding: 0.5em 1em;
     font-weight: 700;
@@ -46,8 +80,16 @@ a:hover {
     transition: transform 0.4s;
     color: blue;
 }
-
 .btn1:hover{
+    transform: translateY(-10px);
+}
+.btn2:hover{
+    transform: translateY(-10px);
+}
+.btn3:hover{
+    transform: translateY(-10px);
+}
+.btn4:hover{
     transform: translateY(-10px);
 }
       .site-identity h1 a {
@@ -77,6 +119,42 @@ a:hover {
         animation: colorMove 5s infinite linear;
     }
     /* Popup container */
+    .btn2{
+        width: 370px;
+        position: relative;
+        top: 100px;
+        right: 375px;
+        font-size: 2rem;
+        padding: 0.5em 1em;
+        font-weight: 700;
+        border: 10px;
+        border-radius: 5px;
+        transition: transform 0.4s;
+    }
+    .btn3{
+        width: 350px;
+        position: relative;
+        top: 200px;
+        right: 725px;
+        font-size: 2rem;
+        padding: 0.5em 1em;
+        font-weight: 700;
+        border: 10px;
+        border-radius: 5px;
+        transition: transform 0.4s;
+    }
+    .btn4{
+        width: 340px;
+        position: relative;
+        top: 235px;
+        right:px;
+        font-size: 2rem;
+        padding: 0.5em 1em;
+        font-weight: 700;
+        border: 10px;
+        border-radius: 5px;
+        transition: transform 0.4s;
+    }
 .popup {
     display: none;
     position: fixed;
