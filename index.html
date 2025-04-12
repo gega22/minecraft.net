@@ -7,81 +7,23 @@
     <script src="redirect.js"></script>
     <link rel="icon" type="image/x-icon" href="icon.ico">
     <link rel="stylesheet" href="style.css">
+
     <title>MC.net</title>
 </head>
 <body>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .carousel-container {
-            width: 250px;
-            height: 150px;
-            overflow: hidden;
-            position: absolute;
-            top: 150px;
-            left: 1110px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            background: white;
-        }
-
-        .carousel {
-            display: flex;
-            width: 400%; 
-            transition: transform 1s ease-in-out;
-        }
-
-        .carousel img, .blank {
-            width: 250px; 
-            height: 250px;
-            flex-shrink: 0;
-            object-fit: contain; 
-            background: aqua;
-        }
-
-        .blank {
-            background: blue; 
-        }
-    </style>
 </head>
 <body>
-
+    
     <div class="carousel-container">
         <div class="carousel">
             <a href="https://gega22.github.io/minecraft.net-minecraftdungeons/"><img src="image1.jpg" alt="Image 1"></a>
             <a href="https://gega22.github.io/minecraft.net-minecraftdungeons/"><img src="image2.png" alt="Image 2"></a>
             <a href="https://gega22.github.io/minecraft.net-minecraftdungeons/"><img src="image3.jpg" alt="Image 3"></a>
+            <script src="carousel.js"></script>
         </div>
     </div>
-
-    <script>
-        let index = 0;
-        const totalSlides = 3;
-        const carousel = document.querySelector(".carousel");
-
-        function slideImage() {
-            index++;
-            carousel.style.transition = "transform 1s ease-in-out";
-            carousel.style.transform = `translateX(-${index * 250}px)`;
-
-            if (index === totalSlides) {
-                setTimeout(() => {
-                    carousel.style.transition = "none";
-                    carousel.style.transform = "translateX(0px)"; 
-                    index = 0;
-                }, 1000); 
-            }
-        }
-
-        setInterval(slideImage, 5000);
-    </script>
-
     <div class="announcement">
-        <center><p class="refresh site"><a href="https://gega22.github.io/minecraft.net">updated site!!!</a></p></center>
+        <center><p class="refresh site"><a href="https://gega22.github.io/minecraft.net-support/">check out #updated support center</a></p></center>
     </div>
     <header class="site-header">
         <div class="site-identity">
@@ -89,29 +31,24 @@
         </div>
     <nav class="site-navigation">
         <ul class="nav">
-            <li><a href="https://gega22.github.io/contact-us/">contact us</a></li>
-            <li><a href="https://gega22.github.io/minecraft.net-support/">support</a></li>
+            <li><a href="https://gega22.github.io/minecraft.net-support/">support center (updated)</a></li>
             <li><a href="https://gega22.github.io/minecraft.net-resourcepacks/">resource packs</a></li>
-            <li><a href="https://gega22.github.io/minecraft.net-minecraftdungeons/">minecraft dungeons</a></li>
             <li><button class="btn"" onclick="openPopup()">Update Log</button>
 
 
 <div id="popup" class="popup">
     <div class="popup-content">
         <span class="close" onclick="closePopup()">&times;</span>
-        <p class="nuhas">
-            added #contact us page where anyone can send gmail to site developer for bugs to fix, added new image carousel right next corner of the site. updated main site design, other resource packs and design changes coming soon.
+        <p class="update-log">
+            updated main page with more greenish colors, added support center and "carousel like" in right side of page. other resource packs coming soon
 </div></li>
                 </ul>
             </nav>
         </header>  
         <button class="btn1"><a href="https://gega22.github.io/minecraft.net-updates-nether-update/">nether update</a></button>
-            <button class="btn2"><a href="https://gega22.github.io/minecraft.net-updates-wild-update/">wild & cave update</a></button>
-            <button class="btn3"><a href="https://gega22.github.io/minecraft.net-updates-aquatic-update/">ocean sea update</a></button>
-            <button class="btn4"><a href="https://gega22.github.io/minecraft.net-updates-trails-tales/">trails tales update</a></button>
-            <div class="rgb-line"></div>
-
-
+            <button class="btn1"><a href="https://gega22.github.io/minecraft.net-updates-wild-update/">wild update</a></button>
+            <button class="btn1"><a href="https://gega22.github.io/minecraft.net-updates-aquatic-update/">ocean sea update</a></button>
+            <button class="btn1"><a href="https://gega22.github.io/minecraft.net-updates-trails-tales/">trails tales update</a></button>
 <script src="script.js"></script>
 <div class="loader">
   </div>

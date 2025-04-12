@@ -3,38 +3,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
   }
-  .rgb-line {
-    margin-top: 50px;
-    position: fixed;
-    top: 80px;  /* Adjust this to match the navbar height */
-    left: 25%;
-    transform: translateX(-50%);
-    width: 4px; /* Adjust thickness */
-    height: calc(100vh - 100px); /* Subtract navbar height to prevent touching it */
-    background: linear-gradient(180deg, red, green, blue);
-    z-index: 9999;
-    border-radius: 10px; /* Optional: makes edges smooth */
-    animation: gradientFlow 3s linear infinite;
-}
-
-@keyframes gradientFlow {
-    0% {
-        background: linear-gradient(180deg, red, green, blue);
-    }
-    25% {
-        background: linear-gradient(180deg, green, blue, red);
-    }
-    50% {
-        background: linear-gradient(180deg, blue, red, green);
-    }
-    75% {
-        background: linear-gradient(180deg, red, green, blue);
-    }
-    100% {
-        background: linear-gradient(180deg, green, blue, red);
-    }
-}
-
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 body {
@@ -60,38 +28,28 @@ a:hover {
     margin: 0.6em 0;
     display: inline-block;
 }
-.site-navigation ul,
-.site-navigation li {
-    margin: 0;
-    padding: 0;
-}
 .site-navigation li {
     display: inline-block;
     margin: 1.4em 1em 1em 1em;
 }
-.btn1{
+.btn1 {
     width: 340px;
-    margin-top: 20px;
+    margin-top: 35px;
+    margin-left: 0;
     font-size: 2rem;
     padding: 0.5em 1em;
     font-weight: 700;
-    border: 10px;
+    border: none;
     border-radius: 5px;
     transition: transform 0.4s;
     color: blue;
+    display: block;
+    text-align: center;
 }
 .btn1:hover{
     transform: translateY(-10px);
 }
-.btn2:hover{
-    transform: translateY(-10px);
-}
-.btn3:hover{
-    transform: translateY(-10px);
-}
-.btn4:hover{
-    transform: translateY(-10px);
-}
+
       .site-identity h1 a {
         color: #fff;
         animation: colorMove 5s infinite linear;
@@ -99,61 +57,24 @@ a:hover {
     
     @keyframes colorMove {
         0% {
-            color: #ff0000;
+            color: green;
         }
         25% {
-            color: #00ff00;
+            color: greenyellow;
         }
         50% {
-            color: #0000ff;
+            color: greenyellow;
         }
-        75% {
-            color: #ffff00;
+        75%{
+            color: aqua;
         }
         100% {
-            color: #ff00ff;
+            color: greenyellow;
         }
     }
     .site-identity h1 a {
         color: #fff; 
         animation: colorMove 5s infinite linear;
-    }
-    /* Popup container */
-    .btn2{
-        width: 370px;
-        position: relative;
-        top: 100px;
-        right: 375px;
-        font-size: 2rem;
-        padding: 0.5em 1em;
-        font-weight: 700;
-        border: 10px;
-        border-radius: 5px;
-        transition: transform 0.4s;
-    }
-    .btn3{
-        width: 350px;
-        position: relative;
-        top: 200px;
-        right: 725px;
-        font-size: 2rem;
-        padding: 0.5em 1em;
-        font-weight: 700;
-        border: 10px;
-        border-radius: 5px;
-        transition: transform 0.4s;
-    }
-    .btn4{
-        width: 340px;
-        position: relative;
-        top: 235px;
-        right:px;
-        font-size: 2rem;
-        padding: 0.5em 1em;
-        font-weight: 700;
-        border: 10px;
-        border-radius: 5px;
-        transition: transform 0.4s;
     }
 .popup {
     display: none;
@@ -167,7 +88,6 @@ a:hover {
     z-index: 9999;
 }
 
-/* Close button */
 .close {
     position: absolute;
     top: 10px;
@@ -177,7 +97,7 @@ a:hover {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: orangered;
+    background-color: yellowgreen;
     color: white;
     text-align: center;
     font-size: 16px;
@@ -188,16 +108,7 @@ a:hover {
     transition: background-color 0.3s;
   }
   
-  .btn:hover {
-    background-color: red;}
-    .what_happend{
-        font-size: 25px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-    .img_png{
-        height: 50px;
-    }
-    .nuhas {
+    .update-log {
         color: white; 
         text-shadow: 
           0 0 7px hsl(300, 100%, 80%),  
@@ -205,39 +116,14 @@ a:hover {
           0 0 21px hsl(180, 100%, 60%); 
         font-size: 3em; 
       }
-      .turn-off {
-        position: fixed;
-        bottom: 20px; 
-        right: 20px; 
-        padding: 10px 20px;
-        font-size: 18px;
-        background-color: red; 
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease;
-      }
-      
-      .turn-off:hover {
-        background-color: orange;
-      }
   
-  .button.turn-on.active {
-    background-color: #28a745; 
-  }
-  .announcement {
-    background-color: red; 
-    padding: 10px; 
-}
+      .announcement {
+        background-color: rgba(153, 205, 50, 0.658); 
+        padding: 10px; 
+    }
 
 .announcement p {
     margin: 0; 
-}
-
-.announcement strong {
-    color: #fff; 
 }
 
 .announcement a {
@@ -246,9 +132,6 @@ a:hover {
     font-weight: bold; 
 }
 
-.announcement a:hover {
-    text-decoration: underline;
-}
 *{
     margin: 0;
     padding: 0;
@@ -275,9 +158,38 @@ a:hover {
       visibility: hidden;
     }
   }
-  .announcements{
-    color: silver;
-  }
-.loading{
-    height: 700px;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.carousel-container {
+    width: 250px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+    top: 150px;
+    right: 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.carousel {
+    display: flex;
+    width: 4002%; 
+    transition: transform 5s ease-in-out;
+}
+
+.carousel img, .blank {
+    width: 250px; 
+    height: 250px;
+    flex-shrink: 0;
+    object-fit: contain; 
+    background: aqua;
+}
+
+.blank {
+    background: blue; 
 }
