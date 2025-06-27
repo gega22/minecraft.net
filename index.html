@@ -56,14 +56,12 @@
 
    
 
-<script>
-  // Detect app via user agent
-  const isApp = navigator.userAgent.includes("MyAppUserAgent");
-
-  if (isApp) {
-    document.querySelectorAll(".web-only").forEach(el => el.style.display = "none");
-  }
-</script>
+  <script>
+    // If in the app, remove the website-only element *before* it's shown
+    if (navigator.userAgent.includes("MyAppUserAgent")) {
+      document.write('<style>.web-only { display: none !important; }</style>');
+    }
+  </script>
 
 
 </body>
