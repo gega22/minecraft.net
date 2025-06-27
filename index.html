@@ -8,13 +8,6 @@
     <link rel="icon" type="image/x-icon" href="icon.ico">
     <link rel="stylesheet" href="style.css">
     <title>MC.net</title>
-
-    <!-- Hide .web-only if inside the app (e.g. Electron) -->
-    <script>
-        if (navigator.userAgent.includes("Electron")) {
-            document.write('<style>.web-only { display: none !important; }</style>');
-        }
-    </script>
 </head>
 <body>
 
@@ -63,9 +56,21 @@
 
     <button class="btn1"><a href="https://gega22.github.io/minecraft.net-resourcepacks/">resource packs</a></button>
 
-    <script src="script.js"></script>
     <div class="loader"></div>
+
+    <script src="script.js"></script>
     <script src="pre.js" charset="utf-8"></script>
+
+    <!-- 👇 This hides 'web-only' content inside the app -->
+    <script>
+        const ua = navigator.userAgent;
+
+        // Replace 'Electron' if your app uses something else (Cordova, Tauri, etc.)
+        if (ua.includes("Electron")) {
+            const elements = document.querySelectorAll(".web-only");
+            elements.forEach(el => el.style.display = "none");
+        }
+    </script>
 
 </body>
 </html>
