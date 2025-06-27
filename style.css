@@ -1,8 +1,9 @@
 body {
-    background: url('background.png');
+    background: url('wallpaperflare.com_wallpaper.jpg');
+    background-attachment: fixed;
     background-size: cover;
   }
-.beta{
+  .beta{
     color: red}
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
@@ -80,7 +81,7 @@ a:hover {
             color: greenyellow;
         }
         75%{
-            color: aqua;
+            color: rgb(255, 115, 0);
         }
         100% {
             color: greenyellow;
@@ -111,7 +112,7 @@ a:hover {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: yellowgreen;
+    background-color: rgba(117, 58, 58, 0.644);
     color: white;
     text-align: center;
     font-size: 16px;
@@ -132,7 +133,7 @@ a:hover {
       }
   
       .announcement {
-        background-color: rgba(153, 205, 50, 0.658); 
+        background-color: rgba(222, 184, 135, 0.438); 
         padding: 10px; 
     }
 
