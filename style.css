@@ -80,7 +80,7 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid #ff1f1f;
-    background-image: url('popup\ background.png');
+    background-image: url('popup-background.png');
     padding: 20px;
     z-index: 9999;
 }
