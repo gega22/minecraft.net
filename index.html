@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="300">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="redirect.js"></script>
@@ -10,18 +11,8 @@
     <title>MC.net</title>
 </head>
 <body>
-
-    <div class="carousel-container">
-        <div class="carousel">
-            <a href="https://gega22.github.io/minecraft.net-minecraftdungeons/"><img src="image1.jpg" alt="Image 1"></a>
-            <a href="https://gega22.github.io/minecraft.net-minecraftdungeons/"><img src="image2.png" alt="Image 2"></a>
-            <a href="https://gega22.github.io/minecraft.net-minecraftdungeons/"><img src="image3.jpg" alt="Image 3"></a>
-            <script src="carousel.js"></script>
-        </div>
-    </div>
-
     <div class="announcement">
-        <center><p class="refresh site"><a href="">latest update: 6/26/2025</a></p></center>
+        <center><p class="refresh site"><a href="">click anywhere to start music ;D</a></p></center>
     </div>
 
     <header class="site-header">
@@ -32,15 +23,13 @@
         <nav class="site-navigation">
             <ul class="nav">
                 <li><a href="https://gega22.github.io/minecraft.net-support/">support center</a></li>
-                <li><a href="https://gega22.github.io/minecraft.net-updates/">load list of MC major updates</a></li>
-                <li><span class="web-only"><a href="a">Download MC.net desktop app</a></span></li>
-                <li>
+                  <li>
                     <button class="btn" onclick="openPopup()">Update Log</button>
                     <div id="popup" class="popup">
                         <div class="popup-content">
                             <span class="close" onclick="closePopup()">&times;</span>
                             <p class="update-log">
-                                changed theme to summer theme, added new desktop app for better experience ;D
+                                new UI, added new design to entire website, added new floating buttons on main page, auto updater and E.T.C
                             </p>
                         </div>
                     </div>
@@ -59,5 +48,15 @@
 
     <script src="update-log.js"></script>
     <script src="startup-loader.js" charset="utf-8"></script>
+
+    <div class="itemtemp">
+    <a href="https://gega22.github.io/minecraft.net-updates-nether-update/"><img class="nether-update" src="nether-update-icon.png" alt=""></a>
+    <a href="https://gega22.github.io/minecraft.net-updates-aquatic-update/"><img class="ocean-update" src="oecan-update-icon.png" alt=""></a>
+    <a href="https://gega22.github.io/minecraft.net-updates-wild-update/"><img class="wild-update" src="wild-update-icon.png" alt=""></a>
+    <a href="https://gega22.github.io/minecraft.net-updates-trails-tales/"><img class="trails-tales-update" src="trails-tales-update-icon.png" alt=""></a>
+    </div>
+    <audio id="bgMusic" src="C418 - Cat - Minecraft Volume Alpha - SMORT (youtube).mp3"></audio>
+
+    <script src="background-music.js"></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
 body {
-    background: url('background.jpg');
+    background: url('background.png');
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   .beta{
-    color: rgb(255, 166, 0)}
+    color: rgba(121, 90, 4, 0.795)}
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 body {
@@ -19,11 +19,11 @@ a:hover {
     color: rgb(179, 179, 179);
 }
 .site-header {
+    justify-content: space-between;
     border-bottom: 1px solid #dfdfdf;
     padding: 0.5em 1em;
     display: flex;
-    justify-content: space-between;
-    background-color: rgba(128, 128, 128, 0.72);
+    background-color: rgba(5, 63, 102, 0.295);
 }
 .site-identity h1 {
     font-size: 1.5em;
@@ -54,19 +54,19 @@ a:hover {
     
 @keyframes colorMove {
         0% {
-            color: green;
+            color: rgb(73, 55, 3);
         }
         25% {
-            color: greenyellow;
+            color: rgb(54, 24, 4);
         }
         50% {
-            color: greenyellow;
+            color: rgb(10, 61, 90);
         }
         75%{
-            color: rgb(255, 115, 0);
+            color: rgb(9, 19, 156);
         }
         100% {
-            color: greenyellow;
+            color: rgb(77, 60, 5);
         }
 }
     .site-identity h1 a {
@@ -79,7 +79,7 @@ a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid #ff1f1f;
+    border: 3px solid #1040a8;
     background-image: url('popup-background.png');
     padding: 20px;
     z-index: 9999;
@@ -116,7 +116,7 @@ a:hover {
       }
   
       .announcement {
-        background-color: rgba(222, 184, 135, 0.438); 
+        background-color: rgba(6, 98, 151, 0.192); 
         padding: 10px; 
     }
 
@@ -161,33 +161,51 @@ a:hover {
     padding: 0;
     box-sizing: border-box;
 }
-
-.carousel-container {
-    width: 250px;
-    height: 150px;
-    overflow: hidden;
-    position: absolute;
-    top: 150px;
-    right: 0;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    background: white;
-}
-
-.carousel {
+.itemtemp{
+    justify-content: space-between;
     display: flex;
-    width: 4002%; 
-    transition: transform 5s ease-in-out;
+    height: 150px;
+    width: 100%;
+    transform: translate(0px, 150px);
 }
+.nether-update{
+    display: flex;
+    height: 150px;
+    width: 150px;
+    transform: translate(0px,-3px);
+    border-radius: 20px;
+}
+.wild-update{
+    height: 149px;
+    width: 150px;
+    transform: translate(0px,-5px);
+    border-radius: 20px;
+    border: solid darkblue 5px;
+}
+.ocean-update{
+    height: 149px;
+    width: 150px;
+    transform: translate(0px,-1px);
+    border-radius: 20px;
+    border: solid aqua 5px;
+}
+.trails-tales-update{
+    height: 149px;
+    width: 150px;
+    transform: translate(0px, -2px);
+    border-radius: 20px;
+    border: solid saddlebrown 5px;
+}
+  img {
+    width: 150px;
+    animation: float 2s ease-in-out infinite;
+  }
 
-.carousel img, .blank {
-    width: 250px; 
-    height: 250px;
-    flex-shrink: 0;
-    object-fit: contain; 
-    background: aqua;
-}
-
-.blank {
-    background: whitesmoke; 
-}
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px); /* how high it moves */
+    }
+  }
