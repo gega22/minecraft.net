@@ -3,6 +3,12 @@ body {
     background-attachment: fixed;
     background-size: 100% 100%;
   }
+body.auth-pending {
+    overflow: hidden;
+}
+body.authenticated {
+    overflow: auto;
+}
   .beta{
     color: rgba(121, 90, 4, 0.795)}
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
@@ -10,6 +16,83 @@ body {
 body {
     font-family: "Open Sans", sans-serif;
     margin: 0;
+}
+.auth-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: url('backgroundlock.png') center/cover no-repeat;
+}
+.auth-screen[hidden] {
+    display: none !important;
+}
+.auth-card {
+    width: min(100%, 460px);
+    padding: 36px 32px;
+    border: 3px solid rgba(23, 138, 184, 0.9);
+    border-radius: 18px;
+    background: rgba(17,    25, 15, 0.9);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    color: #f3f0dd;
+    text-align: center;
+}
+.auth-kicker {
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #b6cb93;
+}
+.auth-card h2 {
+    margin-bottom: 14px;
+    font-family: "Minecraft", "Open Sans", sans-serif;
+    font-size: clamp(2rem, 5vw, 2.7rem);
+}
+.auth-copy {
+    margin-bottom: 24px;
+    line-height: 1.6;
+    color: rgba(243, 240, 221, 0.84);
+}
+.google-login-button {
+    width: 100%;
+    padding: 15px 18px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #fff7d7, #d8c789);
+    color: #2d250d;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s, opacity 0.25s;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.google-login-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+.google-login-button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+.auth-status {
+    min-height: 24px;
+    margin-top: 18px;
+    color: #dfe8b8;
+}
+.auth-status-error {
+    color: #ff9f9f;
+}
+.site-shell {
+    display: none;
+    visibility: hidden;
+}
+body.authenticated .site-shell {
+    display: block;
+    visibility: visible;
 }
 a {
     text-decoration: none;
@@ -20,15 +103,9 @@ a:hover {
 }
 .site-header {
     justify-content: space-between;
-    border-bottom: 1px solid #dfdfdf;
     padding: 0.5em 1em;
     display: flex;
-    background-color: rgba(5, 63, 102, 0.295);
-}
-.site-identity h1 {
-    font-size: 1.5em;
-    margin: 0.6em 0;
-    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.295);
 }
 .site-navigation li {
     display: inline-block;
@@ -80,7 +157,7 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     border: 3px solid #1040a8;
-    background-image: url('popup-background.png');
+    background-image: url('background.png');
     padding: 20px;
     z-index: 9999;
 }
@@ -145,6 +222,9 @@ a:hover {
     justify-content: center;
     align-items: center;
   }
+  body.auth-pending .loader{
+    display: none;
+  }
   
   .disppear{
     animation: vanish 1s forwards;
@@ -162,11 +242,11 @@ a:hover {
     box-sizing: border-box;
 }
 .itemtemp{
-    justify-content: space-between;
+    justify-content: space-around;
     display: flex;
     height: 150px;
     width: 100%;
-    transform: translate(0px, 150px);
+    transform: translate(0px, 149px);
 }
 .nether-update{
     display: flex;
@@ -206,6 +286,6 @@ a:hover {
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-20px); /* how high it moves */
+      transform: translateY(-20px);
     }
   }

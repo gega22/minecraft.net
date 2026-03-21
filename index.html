@@ -2,17 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="60">
+    <meta http-equiv="refresh" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="redirect.js"></script>
     <link rel="icon" type="image/x-icon" href="icon.ico">
     <link rel="stylesheet" href="style.css">
     <title>MC.net</title>
 </head>
-<body>
+<body class="auth-pending">
+    <div id="auth-screen" class="auth-screen">
+        <div class="auth-card">
+            <p class="auth-kicker">minecraft.net access</p>
+            <h2>Sign in with Google</h2>
+            <p class="auth-copy">
+                This site stays locked until you sign in with your Google account through Firebase Authentication.
+            </p>
+            <button id="google-login-button" class="google-login-button" type="button">
+                Continue with Google
+            </button>
+            <p id="auth-status" class="auth-status" aria-live="polite">
+                Waiting for Firebase configuration.
+            </p>
+        </div>
+    </div>
+
+    <div id="site-shell" class="site-shell" aria-hidden="true">
     <div class="announcement">
-        <center><p class="refresh site"><a href="">click anywhere to start music ;D</a></p></center>
+        <center><p class="refresh site"><a href="">update 1.8a pre-released</a></p></center>
     </div>
 
     <header class="site-header">
@@ -20,10 +36,10 @@
             <h1><a href="https://www.minecraft.net/en-us">minecraft.net (official WB link)</a></h1>
         </div>
 
-        <nav class="site-navigation">
-            <ul class="nav">
+            <nav class="site-navigation">
+                <ul class="nav">
                 <li><a href="https://gega22.github.io/minecraft.net-support/">support center</a></li>
-                  <li>
+                <li>
                     <button class="btn" onclick="openPopup()">Update Log</button>
                     <div id="popup" class="popup">
                         <div class="popup-content">
@@ -33,10 +49,10 @@
                             </p>
                         </div>
                     </div>
-                </li>
-            </ul>
-        </nav>
+            </div>
+        </div>
     </header>
+
 
     <button class="btn1">
         <p class="beta">plugins soon</p>
@@ -55,8 +71,10 @@
     <a href="https://gega22.github.io/minecraft.net-updates-wild-update/"><img class="wild-update" src="wild-update-icon.png" alt=""></a>
     <a href="https://gega22.github.io/minecraft.net-updates-trails-tales/"><img class="trails-tales-update" src="trails-tales-update-icon.png" alt=""></a>
     </div>
-    <audio id="bgMusic" src="C418 - Cat - Minecraft Volume Alpha - SMORT (youtube).mp3"></audio>
+    </div>
 
-    <script src="background-music.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="redirect.js"></script>
+    <script type="module" src="auth.js"></script>
 </body>
 </html>
