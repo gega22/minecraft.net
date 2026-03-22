@@ -1,5 +1,5 @@
 body {
-    background: url('background.png');
+    background: url('backgroundlock.png');
     background-attachment: fixed;
     background-size: 100% 100%;
   }
@@ -103,9 +103,52 @@ a:hover {
 }
 .site-header {
     justify-content: space-between;
+    align-items: center;
     padding: 0.5em 1em;
     display: flex;
     background-color: rgba(255, 255, 255, 0.295);
+}
+.profile-chip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.user-photo {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    animation: none;
+    transform: none;
+}
+.profile-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.profile-upload {
+    width: fit-content;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.profile-upload-input {
+    display: none;
+}
+.profile-label {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.profile-meta h1 {
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1.1;
 }
 .site-navigation li {
     display: inline-block;

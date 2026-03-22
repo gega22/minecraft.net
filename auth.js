@@ -13,10 +13,31 @@ const authScreen = document.getElementById("auth-screen");
 const siteShell = document.getElementById("site-shell");
 const statusElement = document.getElementById("auth-status");
 const googleLoginButton = document.getElementById("google-login-button");
+const userPhoto = document.getElementById("user-photo");
+const userName = document.getElementById("user-name");
+const userPhotoUpload = document.getElementById("user-photo-upload");
+
+function getPhotoStorageKey(user) {
+  return user?.uid ? `customPfp:${user.uid}` : null;
+}
 
 function setStatus(message, isError = false) {
   statusElement.textContent = message;
   statusElement.classList.toggle("auth-status-error", isError);
+}
+
+function updateProfile(user) {
+  if (!user) {
+    return;
+  }
+
+  userName.textContent = user.displayName || user.email || "Google User";
+  const customPhoto = getPhotoStorageKey(user) ? localStorage.getItem(getPhotoStorageKey(user)) : null;
+  if (customPhoto) {
+    userPhoto.src = customPhoto;
+  } else if (user.photoURL) {
+    userPhoto.src = user.photoURL;
+  }
 }
 
 function showSite() {
@@ -76,6 +97,7 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
+      updateProfile(user);
       setStatus(`Signed in as ${user.displayName || user.email || "Google user"}.`);
       showSite();
       return;
@@ -83,5 +105,27 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
 
     googleLoginButton.disabled = false;
     setStatus("Sign in with Google to unlock the site.");
+  });
+
+  userPhotoUpload.addEventListener("change", () => {
+    const [file] = userPhotoUpload.files || [];
+    const currentUser = auth.currentUser;
+    const storageKey = getPhotoStorageKey(currentUser);
+
+    if (!file || !currentUser || !storageKey) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = typeof reader.result === "string" ? reader.result : "";
+      if (!result) {
+        return;
+      }
+
+      localStorage.setItem(storageKey, result);
+      userPhoto.src = result;
+    };
+    reader.readAsDataURL(file);
   });
 }

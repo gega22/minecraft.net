@@ -15,13 +15,13 @@
             <p class="auth-kicker">minecraft.net access</p>
             <h2>Sign in with Google</h2>
             <p class="auth-copy">
-                This site stays locked until you sign in with your Google account through Firebase Authentication.
+                Log in or Sign up with google
             </p>
             <button id="google-login-button" class="google-login-button" type="button">
                 Continue with Google
             </button>
             <p id="auth-status" class="auth-status" aria-live="polite">
-                Waiting for Firebase configuration.
+                Waiting for approval.
             </p>
         </div>
     </div>
@@ -33,9 +33,17 @@
 
     <header class="site-header">
         <div class="site-identity">
-            <h1><a href="https://www.minecraft.net/en-us">minecraft.net (official WB link)</a></h1>
+            <div class="profile-chip">
+                <img id="user-photo" class="user-photo" src="icon.ico" alt="Google profile picture">
+                <div class="profile-meta">
+                    <p class="profile-label">Signed in as</p>
+                    <h1 id="user-name">Google User</h1>
+                    <label class="profile-upload" for="user-photo-upload">Change PFP</label>
+                    <input id="user-photo-upload" class="profile-upload-input" type="file" accept="image/*">
+                </div>
+            </div>
         </div>
-
+        
             <nav class="site-navigation">
                 <ul class="nav">
                 <li><a href="https://gega22.github.io/minecraft.net-support/">support center</a></li>
