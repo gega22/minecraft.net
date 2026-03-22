@@ -288,33 +288,33 @@ a:hover {
     justify-content: space-around;
     display: flex;
     height: 150px;
-    width: 100%;
+    width:100%;
     transform: translate(0px, 149px);
 }
 .nether-update{
     display: flex;
-    height: 150px;
-    width: 150px;
+    height: 130px;
+    width: 130px;
     transform: translate(0px,-3px);
     border-radius: 20px;
 }
 .wild-update{
-    height: 149px;
-    width: 150px;
+    height: 130px;
+    width: 130px;
     transform: translate(0px,-5px);
     border-radius: 20px;
     border: solid darkblue 5px;
 }
 .ocean-update{
-    height: 149px;
-    width: 150px;
+    height: 130px;
+    width: 130px;
     transform: translate(0px,-1px);
     border-radius: 20px;
     border: solid aqua 5px;
 }
 .trails-tales-update{
-    height: 149px;
-    width: 150px;
+    height: 130px;
+    width: 130px;
     transform: translate(0px, -2px);
     border-radius: 20px;
     border: solid saddlebrown 5px;
