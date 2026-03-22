@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   setPersistence,
+  signOut,
   signInWithPopup,
   signInWithRedirect,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
@@ -16,6 +17,7 @@ const googleLoginButton = document.getElementById("google-login-button");
 const userPhoto = document.getElementById("user-photo");
 const userName = document.getElementById("user-name");
 const userPhotoUpload = document.getElementById("user-photo-upload");
+const logoutLink = document.getElementById("logout-link");
 
 function getPhotoStorageKey(user) {
   return user?.uid ? `customPfp:${user.uid}` : null;
@@ -54,6 +56,16 @@ function showSite() {
   if (typeof window.handleAuthenticatedRedirect === "function") {
     window.handleAuthenticatedRedirect();
   }
+}
+
+function showAuthGate() {
+  document.body.classList.add("auth-pending");
+  document.body.classList.remove("authenticated");
+  authScreen.removeAttribute("hidden");
+  authScreen.style.display = "flex";
+  siteShell.setAttribute("aria-hidden", "true");
+  siteShell.style.display = "none";
+  siteShell.style.visibility = "hidden";
 }
 
 function hasPlaceholderConfig(config) {
@@ -95,6 +107,17 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
     }
   });
 
+  logoutLink.addEventListener("click", async (event) => {
+    event.preventDefault();
+    try {
+      await signOut(auth);
+      showAuthGate();
+      setStatus("Signed out. Sign in with Google to unlock the site.");
+    } catch (error) {
+      setStatus(error?.message || "Sign out failed.", true);
+    }
+  });
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
       updateProfile(user);
@@ -103,6 +126,7 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
       return;
     }
 
+    showAuthGate();
     googleLoginButton.disabled = false;
     setStatus("Sign in with Google to unlock the site.");
   });
