@@ -1,6 +1,6 @@
 window.firebaseConfig = {
-  apiKey: "AIzaSyBRqfTcdQAjcWaaD-vi0SW9q8eSUFn5oDw",
-  authDomain: "my-login-app-e1f77.firebaseapp.com",
-  projectId: "my-login-app-e1f77",
-  appId: "1:956935543750:web:54b59e52e718f4ff98f0c7",
+  apiKey: "AIzaSyCQIbURls4yP1pZ1zKCUcJJiysWQ0BZouA",
+  authDomain: "net-login-999.firebaseapp.com",
+  projectId: "net-login-999",
+  appId: "1:294289721800:web:0f1cabbac186923e1218fd",
 };
