@@ -58,6 +58,84 @@ body {
     line-height: 1.6;
     color: rgba(243, 240, 221, 0.84);
 }
+.email-auth-form {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 18px;
+    text-align: left;
+}
+.auth-field {
+    display: grid;
+    gap: 6px;
+}
+.auth-field span {
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #dfe8b8;
+}
+.auth-input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid rgba(212, 223, 171, 0.35);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fdf8e5;
+    font-size: 0.98rem;
+}
+.auth-input::placeholder {
+    color: rgba(253, 248, 229, 0.55);
+}
+.auth-input:focus {
+    outline: 2px solid rgba(255, 247, 215, 0.65);
+    outline-offset: 2px;
+}
+.auth-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.auth-button {
+    width: 100%;
+    padding: 13px 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #fff7d7, #d8c789);
+    color: #2d250d;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s, opacity 0.25s;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+.auth-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+.auth-button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+.auth-button-secondary {
+    background: linear-gradient(180deg, #b6cb93, #7d935f);
+    color: #17210c;
+}
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 8px 0 18px;
+    color: rgba(223, 232, 184, 0.75);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(223, 232, 184, 0.28);
+}
 .google-login-button {
     width: 100%;
     padding: 15px 18px;
@@ -81,6 +159,7 @@ body {
 .auth-status {
     min-height: 24px;
     margin-top: 18px;
+    line-height: 1.5;
     color: #dfe8b8;
 }
 .auth-status-error {
@@ -149,6 +228,15 @@ a:hover {
     color: #fff;
     font-size: 1.3rem;
     line-height: 1.1;
+}
+@media (max-width: 540px) {
+    .auth-card {
+        padding: 28px 20px;
+    }
+
+    .auth-actions {
+        grid-template-columns: 1fr;
+    }
 }
 .site-navigation li {
     display: inline-block;

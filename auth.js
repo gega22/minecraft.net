@@ -1,9 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import {
+  createUserWithEmailAndPassword,
   browserLocalPersistence,
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   setPersistence,
   signOut,
   signInWithPopup,
@@ -13,6 +15,11 @@ import {
 const authScreen = document.getElementById("auth-screen");
 const siteShell = document.getElementById("site-shell");
 const statusElement = document.getElementById("auth-status");
+const emailAuthForm = document.getElementById("email-auth-form");
+const emailInput = document.getElementById("email-input");
+const passwordInput = document.getElementById("password-input");
+const createAccountButton = document.getElementById("create-account-button");
+const emailLoginButton = document.getElementById("email-login-button");
 const googleLoginButton = document.getElementById("google-login-button");
 const userPhoto = document.getElementById("user-photo");
 const userName = document.getElementById("user-name");
@@ -33,12 +40,12 @@ function updateProfile(user) {
     return;
   }
 
-  userName.textContent = user.displayName || user.email || "Google User";
+  userName.textContent = user.displayName || user.email || "User";
   const customPhoto = getPhotoStorageKey(user) ? localStorage.getItem(getPhotoStorageKey(user)) : null;
   if (customPhoto) {
     userPhoto.src = customPhoto;
-  } else if (user.photoURL) {
-    userPhoto.src = user.photoURL;
+  } else {
+    userPhoto.src = "default.webp";
   }
 }
 
@@ -72,12 +79,54 @@ function hasPlaceholderConfig(config) {
   return Object.values(config).some((value) => typeof value === "string" && value.startsWith("PASTE_YOUR_"));
 }
 
+function getTrimmedEmail() {
+  return emailInput.value.trim().toLowerCase();
+}
+
+function isGmailAddress(value) {
+  return /^[a-z0-9._%+-]+@gmail\.com$/i.test(value);
+}
+
+function getFriendlyAuthError(error, action) {
+  switch (error?.code) {
+    case "auth/email-already-in-use":
+    case "auth/account-exists-with-different-credential":
+      return "This Gmail is already used.";
+    case "auth/wrong-password":
+      return "Wrong password.";
+    case "auth/user-not-found":
+      return "Please click Create account to create an account.";
+    case "auth/invalid-email":
+      return "Enter a valid Gmail address.";
+    case "auth/weak-password":
+      return "Password must be at least 6 characters.";
+    case "auth/too-many-requests":
+      return "Too many attempts. Try again later.";
+    case "auth/network-request-failed":
+      return "Network error. Check your connection.";
+    case "auth/popup-blocked":
+      return "Popup blocked. Allow popups and try again.";
+    case "auth/cancelled-popup-request":
+      return "Google sign-in was cancelled.";
+    default:
+      return action;
+  }
+}
+
+function setAuthControlsDisabled(isDisabled) {
+  emailInput.disabled = isDisabled;
+  passwordInput.disabled = isDisabled;
+  createAccountButton.disabled = isDisabled;
+  emailLoginButton.disabled = isDisabled;
+  googleLoginButton.disabled = isDisabled;
+}
+
 const firebaseConfig = window.firebaseConfig;
 
 if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
-  googleLoginButton.disabled = true;
+  setAuthControlsDisabled(true);
   setStatus(
-    "Add your Firebase project values in firebase-config.js, then enable Google sign-in in Firebase Authentication.",
+    "Add your Firebase project values in firebase-config.js, then enable Google and Email/Password sign-in in Firebase Authentication.",
     true
   );
 } else {
@@ -89,8 +138,53 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
     setStatus("Could not save login persistence in this browser.", true);
   });
 
+  emailAuthForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = getTrimmedEmail();
+    if (!isGmailAddress(email)) {
+      setStatus("Use a valid Gmail address ending with @gmail.com.", true);
+      return;
+    }
+
+    setAuthControlsDisabled(true);
+    setStatus("Creating account...");
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, passwordInput.value);
+    } catch (error) {
+      setStatus(getFriendlyAuthError(error, "Could not create account."), true);
+      setAuthControlsDisabled(false);
+    }
+  });
+
+  emailLoginButton.addEventListener("click", async () => {
+    if (!emailAuthForm.reportValidity()) {
+      return;
+    }
+
+    const email = getTrimmedEmail();
+    if (!isGmailAddress(email)) {
+      setStatus("Use a valid Gmail address ending with @gmail.com.", true);
+      return;
+    }
+
+    setAuthControlsDisabled(true);
+    setStatus("Signing in with Gmail...");
+
+    try {
+      await signInWithEmailAndPassword(auth, email, passwordInput.value);
+    } catch (error) {
+      const message =
+        error?.code === "auth/invalid-credential"
+          ? "Please click Create account to create an account."
+          : getFriendlyAuthError(error, "Email sign-in failed.");
+      setStatus(message, true);
+      setAuthControlsDisabled(false);
+    }
+  });
+
   googleLoginButton.addEventListener("click", async () => {
-    googleLoginButton.disabled = true;
+    setAuthControlsDisabled(true);
     setStatus("Opening Google sign-in...");
 
     try {
@@ -102,8 +196,8 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
         return;
       }
 
-      googleLoginButton.disabled = false;
-      setStatus(error?.message || "Google sign-in failed.", true);
+      setAuthControlsDisabled(false);
+      setStatus(getFriendlyAuthError(error, "Google sign-in failed."), true);
     }
   });
 
@@ -112,23 +206,23 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
     try {
       await signOut(auth);
       showAuthGate();
-      setStatus("Signed out. Sign in with Google to unlock the site.");
+      setStatus("Signed out. Create an account, sign in with Gmail, or continue with Google.");
     } catch (error) {
-      setStatus(error?.message || "Sign out failed.", true);
+      setStatus(getFriendlyAuthError(error, "Sign out failed."), true);
     }
   });
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
       updateProfile(user);
-      setStatus(`Signed in as ${user.displayName || user.email || "Google user"}.`);
+      setStatus(`Signed in as ${user.displayName || user.email || "user"}.`);
       showSite();
       return;
     }
 
     showAuthGate();
-    googleLoginButton.disabled = false;
-    setStatus("Sign in with Google to unlock the site.");
+    setAuthControlsDisabled(false);
+    setStatus("Create an account, sign in with Gmail, or continue with Google.");
   });
 
   userPhotoUpload.addEventListener("change", () => {

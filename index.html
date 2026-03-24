@@ -13,10 +13,47 @@
     <div id="auth-screen" class="auth-screen">
         <div class="auth-card">
             <p class="auth-kicker">minecraft.net access</p>
-            <h2>Sign in with Google</h2>
+            <h2>Create an account or sign in</h2>
             <p class="auth-copy">
-                Log in or Sign up with google
+                Use Gmail with a password, or continue with Google.
             </p>
+            <form id="email-auth-form" class="email-auth-form">
+                <label class="auth-field">
+                    <span>Gmail address</span>
+                    <input
+                        id="email-input"
+                        class="auth-input"
+                        type="email"
+                        inputmode="email"
+                        autocomplete="email"
+                        placeholder="yourname@gmail.com"
+                        required
+                    >
+                </label>
+                <label class="auth-field">
+                    <span>Password</span>
+                    <input
+                        id="password-input"
+                        class="auth-input"
+                        type="password"
+                        autocomplete="current-password"
+                        placeholder="At least 6 characters"
+                        minlength="6"
+                        required
+                    >
+                </label>
+                <div class="auth-actions">
+                    <button id="create-account-button" class="auth-button" type="submit">
+                        Create account
+                    </button>
+                    <button id="email-login-button" class="auth-button auth-button-secondary" type="button">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+            <div class="auth-divider" aria-hidden="true">
+                <span>or</span>
+            </div>
             <button id="google-login-button" class="google-login-button" type="button">
                 Continue with Google
             </button>
