@@ -3,13 +3,10 @@ import {
   createUserWithEmailAndPassword,
   browserLocalPersistence,
   getAuth,
-  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   setPersistence,
   signOut,
-  signInWithPopup,
-  signInWithRedirect,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 import {
   doc,
@@ -27,7 +24,6 @@ const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
 const createAccountButton = document.getElementById("create-account-button");
 const emailLoginButton = document.getElementById("email-login-button");
-const googleLoginButton = document.getElementById("google-login-button");
 const userPhoto = document.getElementById("user-photo");
 const userName = document.getElementById("user-name");
 const userPhotoUpload = document.getElementById("user-photo-upload");
@@ -158,10 +154,6 @@ function getFriendlyAuthError(error, action) {
       return "Too many attempts. Try again later.";
     case "auth/network-request-failed":
       return "Network error. Check your connection.";
-    case "auth/popup-blocked":
-      return "Popup blocked. Allow popups and try again.";
-    case "auth/cancelled-popup-request":
-      return "Google sign-in was cancelled.";
     default:
       return action;
   }
@@ -172,7 +164,6 @@ function setAuthControlsDisabled(isDisabled) {
   passwordInput.disabled = isDisabled;
   createAccountButton.disabled = isDisabled;
   emailLoginButton.disabled = isDisabled;
-  googleLoginButton.disabled = isDisabled;
 }
 
 const firebaseConfig = window.firebaseConfig;
@@ -187,7 +178,6 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
-  const provider = new GoogleAuthProvider();
 
   setPersistence(auth, browserLocalPersistence).catch(() => {
     setStatus("Could not save login persistence in this browser.", true);
@@ -238,30 +228,12 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
     }
   });
 
-  googleLoginButton.addEventListener("click", async () => {
-    setAuthControlsDisabled(true);
-    setStatus("Opening Google sign-in...");
-
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      if (error?.code === "auth/popup-blocked" || error?.code === "auth/cancelled-popup-request") {
-        setStatus("Popup blocked. Redirecting to Google sign-in...");
-        await signInWithRedirect(auth, provider);
-        return;
-      }
-
-      setAuthControlsDisabled(false);
-      setStatus(getFriendlyAuthError(error, "Google sign-in failed."), true);
-    }
-  });
-
   logoutLink.addEventListener("click", async (event) => {
     event.preventDefault();
     try {
       await signOut(auth);
       showAuthGate();
-      setStatus("Signed out. Create an account, sign in with Gmail, or continue with Google.");
+      setStatus("Signed out. Create an account or sign in with Gmail.");
     } catch (error) {
       setStatus(getFriendlyAuthError(error, "Sign out failed."), true);
     }
@@ -286,7 +258,7 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
 
     showAuthGate();
     setAuthControlsDisabled(false);
-    setStatus("Create an account, sign in with Gmail, or continue with Google.");
+    setStatus("Create an account or sign in with Gmail.");
   });
 
   userPhotoUpload.addEventListener("change", async () => {
