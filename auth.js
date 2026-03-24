@@ -11,6 +11,13 @@ import {
   signInWithPopup,
   signInWithRedirect,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  serverTimestamp,
+  setDoc,
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
 const authScreen = document.getElementById("auth-screen");
 const siteShell = document.getElementById("site-shell");
@@ -26,8 +33,8 @@ const userName = document.getElementById("user-name");
 const userPhotoUpload = document.getElementById("user-photo-upload");
 const logoutLink = document.getElementById("logout-link");
 
-function getPhotoStorageKey(user) {
-  return user?.uid ? `customPfp:${user.uid}` : null;
+function getUserProfileRef(db, user) {
+  return user?.uid ? doc(db, "users", user.uid) : null;
 }
 
 function setStatus(message, isError = false) {
@@ -35,18 +42,65 @@ function setStatus(message, isError = false) {
   statusElement.classList.toggle("auth-status-error", isError);
 }
 
-function updateProfile(user) {
+function updateProfile(user, profileData = null) {
   if (!user) {
     return;
   }
 
   userName.textContent = user.displayName || user.email || "User";
-  const customPhoto = getPhotoStorageKey(user) ? localStorage.getItem(getPhotoStorageKey(user)) : null;
-  if (customPhoto) {
-    userPhoto.src = customPhoto;
-  } else {
-    userPhoto.src = "default.webp";
+  const syncedPhoto = profileData?.customPhoto || null;
+  const accountPhoto = syncedPhoto || user.photoURL || "default.webp";
+  userPhoto.src = accountPhoto;
+}
+
+async function loadUserProfile(db, user) {
+  const profileRef = getUserProfileRef(db, user);
+  if (!profileRef) {
+    return null;
   }
+
+  const profileSnapshot = await getDoc(profileRef);
+  return profileSnapshot.exists() ? profileSnapshot.data() : null;
+}
+
+function resizeImageFile(file, maxSize = 256, quality = 0.82) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onerror = () => reject(new Error("Could not read the selected file."));
+    reader.onload = () => {
+      const source = typeof reader.result === "string" ? reader.result : "";
+      if (!source) {
+        reject(new Error("Could not read the selected file."));
+        return;
+      }
+
+      const image = new Image();
+      image.onerror = () => reject(new Error("Selected file is not a supported image."));
+      image.onload = () => {
+        const longestSide = Math.max(image.width, image.height) || 1;
+        const scale = Math.min(1, maxSize / longestSide);
+        const targetWidth = Math.max(1, Math.round(image.width * scale));
+        const targetHeight = Math.max(1, Math.round(image.height * scale));
+
+        const canvas = document.createElement("canvas");
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        const context = canvas.getContext("2d");
+        if (!context) {
+          reject(new Error("Could not process the selected image."));
+          return;
+        }
+
+        context.drawImage(image, 0, 0, targetWidth, targetHeight);
+        resolve(canvas.toDataURL("image/jpeg", quality));
+      };
+      image.src = source;
+    };
+
+    reader.readAsDataURL(file);
+  });
 }
 
 function showSite() {
@@ -132,6 +186,7 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
 } else {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
 
   setPersistence(auth, browserLocalPersistence).catch(() => {
@@ -212,9 +267,18 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
     }
   });
 
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
-      updateProfile(user);
+      try {
+        const profileData = await loadUserProfile(db, user);
+        updateProfile(user, profileData);
+      } catch (error) {
+        updateProfile(user);
+        setStatus("Signed in, but synced profile data could not be loaded.", true);
+        showSite();
+        return;
+      }
+
       setStatus(`Signed in as ${user.displayName || user.email || "user"}.`);
       showSite();
       return;
@@ -225,25 +289,33 @@ if (!firebaseConfig || hasPlaceholderConfig(firebaseConfig)) {
     setStatus("Create an account, sign in with Gmail, or continue with Google.");
   });
 
-  userPhotoUpload.addEventListener("change", () => {
+  userPhotoUpload.addEventListener("change", async () => {
     const [file] = userPhotoUpload.files || [];
     const currentUser = auth.currentUser;
-    const storageKey = getPhotoStorageKey(currentUser);
+    const profileRef = getUserProfileRef(db, currentUser);
 
-    if (!file || !currentUser || !storageKey) {
+    if (!file || !currentUser || !profileRef) {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = typeof reader.result === "string" ? reader.result : "";
-      if (!result) {
-        return;
-      }
+    setStatus("Saving profile picture...");
 
-      localStorage.setItem(storageKey, result);
+    try {
+      const result = await resizeImageFile(file);
       userPhoto.src = result;
-    };
-    reader.readAsDataURL(file);
+      await setDoc(
+        profileRef,
+        {
+          customPhoto: result,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+      setStatus("Profile picture saved and synced to your account.");
+    } catch (error) {
+      setStatus("Could not save profile picture.", true);
+    } finally {
+      userPhotoUpload.value = "";
+    }
   });
 }

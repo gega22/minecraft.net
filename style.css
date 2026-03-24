@@ -289,6 +289,7 @@ a:hover {
     transform: translate(-50%, -50%);
     border: 3px solid #1040a8;
     background-image: url('background.png');
+    background-size: cover;
     padding: 20px;
     z-index: 9999;
 }
