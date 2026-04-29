@@ -75,8 +75,14 @@
             </div>
         </div>
         
-            <nav class="site-navigation">
-                <ul class="nav">
+        <button class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="site-navigation" id="site-navigation">
+            <ul class="nav">
                 <li><a id="logout-link" href="">Log out</a></li>
                 <li><a href="https://gega22.github.io/minecraft.net-support/">support center</a></li>
                 <li>
@@ -89,8 +95,8 @@
                             </p>
                         </div>
                     </div>
-            </div>
-        </div>
+            </ul>
+        </nav>
     </header>
 
 
@@ -116,5 +122,27 @@
     <script src="firebase-config.js"></script>
     <script src="redirect.js"></script>
     <script type="module" src="auth.js"></script>
+    
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const siteNavigation = document.getElementById('site-navigation');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.toggle('active');
+                siteNavigation.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on navigation links
+            const navLinks = siteNavigation.querySelectorAll('a, button');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
+                    siteNavigation.classList.remove('active');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
