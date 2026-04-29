@@ -34,20 +34,37 @@ body {
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: url('backgroundlock.png') center/cover no-repeat;
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('backgroundlock.png') center/cover no-repeat;
 }
 .auth-screen[hidden] {
     display: none !important;
 }
 .auth-card {
     width: min(100%, 460px);
-    padding: 36px 32px;
-    border: 3px solid rgba(23, 138, 184, 0.9);
-    border-radius: 18px;
-    background: rgba(17,    25, 15, 0.9);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    max-width: 460px;
+    padding: 42px 36px;
+    border-radius: 24px;
+    background: rgba(17, 25, 15, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
     color: #f3f0dd;
     text-align: center;
+    backdrop-filter: blur(18px);
+    position: relative;
+    overflow: hidden;
+}
+.auth-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 6px;
+    background: linear-gradient(90deg, rgba(143, 202, 237, 0.9), rgba(216, 199, 137, 0.9));
+    border-radius: 999px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    top: 0;
 }
 .auth-kicker {
     margin-bottom: 12px;
@@ -58,7 +75,8 @@ body {
     color: #b6cb93;
 }
 .auth-card h2 {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
+    line-height: 1.05;
     font-family: "Minecraft", "Open Sans", sans-serif;
     font-size: clamp(2rem, 5vw, 2.7rem);
 }
@@ -101,8 +119,8 @@ body {
 }
 .auth-actions {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
 }
 .auth-button {
     width: 100%;
@@ -157,10 +175,10 @@ a:hover {
     align-items: center;
     padding: 1rem;
     display: flex;
-    background: linear-gradient(135deg, rgba(17, 25, 15, 0.95) 0%, rgba(30, 45, 20, 0.9) 100%);
-    border-bottom: 2px solid rgba(182, 203, 147, 0.3);
+    background: transparent;
+    border-bottom: 2px solid rgba(182, 203, 147, 0.15);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -232,7 +250,7 @@ a:hover {
 .btn1 {
     width: 100%;
     max-width: 450px;
-    margin: 25px auto;
+    margin: 40px auto 25px;
     padding: 16px 20px;
     font-size: 1.5rem;
     font-weight: 700;
@@ -293,21 +311,29 @@ a:hover {
 .popup {
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.popup-content {
+    position: relative;
+    width: min(100%, 520px);
+    max-width: 520px;
+    max-height: 90vh;
     border: 3px solid #1040a8;
     background: linear-gradient(135deg, rgba(17, 25, 15, 0.98) 0%, rgba(30, 45, 20, 0.95) 100%);
     background-image: url('background.png');
     background-size: cover;
     background-blend-mode: overlay;
     padding: 30px;
-    z-index: 9999;
     border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    max-width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
     animation: popupSlide 0.3s ease;
 }
 
@@ -448,10 +474,10 @@ a:hover {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 35px;
     width: 100%;
     padding: 30px 20px;
-    transform: translate(0px, 0px);
+    transform: translate(0px, 45px);
 }
 
 .itemtemp a {
@@ -672,29 +698,18 @@ img {
 @media (max-width: 768px) {
     .popup {
         position: fixed;
-        top: auto;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        transform: translateY(0);
-        width: 100%;
-        max-width: 100%;
-        max-height: 80vh;
-        border-radius: 20px 20px 0 0;
-        border: 2px solid #1040a8;
-        padding: 25px;
-        animation: popupSlideUp 0.3s ease;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
     }
     
-    @keyframes popupSlideUp {
-        from {
-            transform: translateY(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
+    .popup-content {
+        width: min(100%, 480px);
+        max-width: 480px;
+        max-height: 90vh;
     }
     
     .update-log {
