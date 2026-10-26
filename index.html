@@ -12,15 +12,37 @@
   fetch('config.json?v=' + Date.now())
     .then(r => r.json())
     .then(config => {
-      if (config && config.maintenance) {
+      // 1. Full Maintenance Lockout
+      if (config.maintenance) {
         document.documentElement.innerHTML = `
-          <body style="background:#0d1117;color:white;text-align:center;padding:100px;font-family:sans-serif;">
-            <h1>🚨 Website is Currently Offline</h1>
-            <p>${config.announcement || 'Under maintenance. Check back later!'}</p>
+          <body style="background:#090d16;color:#f1f5f9;text-align:center;padding:120px 20px;font-family:sans-serif;">
+            <h1 style="color:#ef4444;font-size:32px;">Site Under Maintenance</h1>
+            <p style="font-size:16px;color:#94a3b8;margin-top:12px;">${config.maintenanceNotice || 'We are currently offline for updates.'}</p>
           </body>`;
+        return;
+      }
+
+      // 2. Top Announcement Bar
+      if (config.banner && config.banner.active && config.banner.text) {
+        const colors = {
+          info: '#2563eb',
+          warning: '#d97706',
+          alert: '#dc2626',
+          success: '#059669'
+        };
+        const bar = document.createElement('div');
+        bar.style.cssText = `background:${colors[config.banner.style] || '#2563eb'}; color:white; padding:10px 16px; text-align:center; font-weight:500; font-family:sans-serif; display:flex; justify-content:center; align-items:center; gap:12px; font-size:14px;`;
+        
+        let button = '';
+        if (config.banner.buttonText && config.banner.buttonLink) {
+          button = `<a href="${config.banner.buttonLink}" target="_blank" style="background:rgba(255,255,255,0.2); color:white; padding:4px 10px; border-radius:4px; text-decoration:none; font-size:12px; font-weight:600;">${config.banner.buttonText}</a>`;
+        }
+        
+        bar.innerHTML = `<span>${config.banner.text}</span> ${button}`;
+        document.body.prepend(bar);
       }
     })
-    .catch(() => {}); // If config.json doesn't exist yet, it just loads your site normally!
+    .catch(() => {});
 </script>
 </head>
 <body class="auth-pending">
