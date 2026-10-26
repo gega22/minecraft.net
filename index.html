@@ -8,6 +8,20 @@
     <link rel="icon" type="image/x-icon" href="icon.ico">
     <link rel="stylesheet" href="style.css">
     <title>MC.net</title>
+    <script>
+  fetch('config.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(config => {
+      if (config && config.maintenance) {
+        document.documentElement.innerHTML = `
+          <body style="background:#0d1117;color:white;text-align:center;padding:100px;font-family:sans-serif;">
+            <h1>🚨 Website is Currently Offline</h1>
+            <p>${config.announcement || 'Under maintenance. Check back later!'}</p>
+          </body>`;
+      }
+    })
+    .catch(() => {}); // If config.json doesn't exist yet, it just loads your site normally!
+</script>
 </head>
 <body class="auth-pending">
     <div id="auth-screen" class="auth-screen">
