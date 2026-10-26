@@ -1,4 +1,11 @@
 {
   "maintenance": false,
-  "announcement": ""
+  "maintenanceNotice": "",
+  "banner": {
+    "active": true,
+    "text": "magari update gamovida tesliaaaa",
+    "style": "alert",
+    "buttonText": "",
+    "buttonLink": ""
+  }
 }
