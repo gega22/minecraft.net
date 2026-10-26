@@ -2,7 +2,7 @@
   "maintenance": false,
   "maintenanceNotice": "",
   "banner": {
-    "active": true,
+    "active": false,
     "text": "magari update gamovida tesliaaaa",
     "style": "alert",
     "buttonText": "",
